@@ -62,9 +62,9 @@ export default function MobileNavbar() {
             {/* Home Link */}
           
 
-            <div className="flex flex-col mt-4 space-y-2">
+            <div className=" w-full flex flex-col justify-start space-y-2">
             
-  <Button variant="ghost" className="flex justify-start items-center gap-2" asChild>
+  <Button variant="ghost" className="flex  items-center gap-2" asChild>
               <Link href={"/"}>
                 <HomeIcon className="w-4 h-4" />
                 <span className="lg:inline">Home</span>

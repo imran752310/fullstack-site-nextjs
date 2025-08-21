@@ -1,24 +1,12 @@
-import { ModeToggle } from "@/components/ModeToggle";
-import { Button } from "@/components/ui/button";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
-import Image from "next/image";
+import prisma from "@/lib/prisma";
 
-export default function Home() {
+
+export default async function Home() {
+
+
   return (
     <div>
-      <SignedOut>
-        <SignInButton />
-        <SignUpButton>
-          <Button variant={"secondary"}>   Sign Up</Button>
-        </SignUpButton>
-      </SignedOut>
-      
+     <h1>Home page content</h1>
     </div>
   );
 }

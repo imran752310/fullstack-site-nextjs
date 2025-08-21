@@ -43,10 +43,10 @@ async function DesktopNavbar() {
         </div>
       ) : (
           <SignedOut>
-        <SignInButton />
-        <SignUpButton>
-          <Button variant={"secondary"}>   Sign Up</Button>
-        </SignUpButton>
+        <Button className="default">
+          <SignInButton />
+        </Button>
+        
       </SignedOut>
       )}
     </div>
