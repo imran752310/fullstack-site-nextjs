@@ -1,9 +1,133 @@
-import React from 'react'
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { Button } from "./ui/button";
+import { Loader2Icon, Trash2Icon } from "lucide-react";
 
-function DeleteAlterDialog() {
-  return (
-    <div>DeleteAlterDialog</div>
-  )
+interface DeleteAlterDialogProps {
+  isDeleting: boolean;
+  onDelete: () => Promise<void>;
+  title?: string;
+  description?: string;
 }
 
-export default DeleteAlterDialog
+export function DeleteAlterDialog({
+  isDeleting,
+  onDelete,
+  description = "This action cannot be undone",
+  title = "Delete Data",
+}: DeleteAlterDialogProps) {
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button
+          variant="ghost"
+          size="sm"
+          className="text-muted-foreground hover:text-red-500 -mr-2"
+        >
+          {isDeleting ? (
+            <Loader2Icon className="size-4 animate-spin" />
+          ) : (
+            <Trash2Icon className="size-4" />
+          )}
+        </Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>{title}</AlertDialogTitle>
+          <AlertDialogDescription>{description}</AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction
+            onClick={onDelete}
+            className="bg-red-500 hover:bg-red-600"
+            disabled={isDeleting}
+          >
+            {isDeleting ? "Deleting..." : "Delete"}
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+}
+
+export default DeleteAlterDialog;
+
+
+
+
+// import {
+//   AlertDialog,
+//   AlertDialogAction,
+//   AlertDialogCancel,
+//   AlertDialogContent,
+//   AlertDialogDescription,
+//   AlertDialogFooter,
+//   AlertDialogHeader,
+//   AlertDialogTitle,
+//   AlertDialogTrigger,
+// } from "@/components/ui/alert-dialog"
+// import { Button } from "./ui/button";
+// import { Loader2Icon, Trash2Icon } from "lucide-react";
+// import { title } from "process";
+
+// interface DeleteAlterDialogProps {
+//   isDeleting: boolean;
+//   onDelete: () => Promise<void>;
+//   title?: string;
+//   description?: string;
+// }
+
+// export function DeleteAlterDialog({
+//   isDeleting,
+//   onDelete,
+//   description = "This action connot be undone",
+//   title = "Delete Data"
+// }: DeleteAlterDialogProps ){
+//   return (
+//     <AlertDialog>
+//   <AlertDialogTrigger asChild>
+//     <Button 
+//     variant="ghost"
+//     size="sm"
+//     className="text-muted-foreground hover: text-red-500 -mr-2"
+//     >
+//       {isDeleting ? (
+//         <Loader2Icon className="size-4 animate-ping" />
+//       ) : (
+//         <Trash2Icon className="size-4" />
+//       )}
+//     </Button>
+//   </AlertDialogTrigger>
+//   <AlertDialogContent>
+//     <AlertDialogHeader>
+//       <AlertDialogTitle>{title}</AlertDialogTitle>
+//       <AlertDialogDescription>
+//        {description}
+//       </AlertDialogDescription>
+//     </AlertDialogHeader>
+//     <AlertDialogFooter>
+//       <AlertDialogCancel>Cancel</AlertDialogCancel>
+//       <AlertDialogAction
+//       onClick={onDelete}
+//       className="bg-red-500 hover:bg-red-600"
+//       disabled={isDeleting}
+//       >
+//         {isDeleting ? "Deleting..." : "Delete"}
+//       </AlertDialogAction>
+//     </AlertDialogFooter>
+//   </AlertDialogContent>
+// </AlertDialog>
+//   )
+// }
+
+// export default DeleteAlterDialog
