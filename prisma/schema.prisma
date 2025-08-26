@@ -4,9 +4,13 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+// generator client {
+//   provider = "prisma-client-js"
+//   output   = "../src/generated/prisma"
+// }
+
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -52,7 +56,8 @@ model Post{
   updatedAt DateTime  @updatedAt
 
   // Relations
-  author User @relation(fields: [authorId],references: [id], onDelete: Cascade) // cascade delete means delete all posts if author is deleted
+  author User @relation(fields: [authorId],references: [id], onDelete: Cascade) 
+  // cascade delete means delete all posts if author is deleted
   comments Comment[]
   likes Like[]
   notifications Notification[]
